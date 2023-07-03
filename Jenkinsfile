@@ -6,6 +6,10 @@ def COLOR_MAP = [
 pipeline {
     agent any
 
+       environment {                   
+        WORKSPACE = "${env.WORKSPACE}"
+    }
+
     tools {
         terraform 'Terraform'
     }
