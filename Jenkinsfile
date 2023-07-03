@@ -30,7 +30,7 @@ pipeline {
         stage('Terraform init') {
             steps {
                 echo 'Initiliazing terraform project...'
-                sh 'sudo terraform init'
+                sh 'terraform init'
                
             }
         }
@@ -39,7 +39,7 @@ pipeline {
         stage('Terraform validate') {
             steps {
                 echo 'Code syntax checking...'
-                sh 'sudo terraform validate'
+                sh 'terraform validate'
                
             }
         }
@@ -48,7 +48,7 @@ pipeline {
         stage('Terraform plan') {
             steps {
                 echo 'Terraform plan for the dry run...'
-                sh 'sudo terraform plan'
+                sh 'terraform plan'
                
             }
         }
@@ -83,7 +83,7 @@ pipeline {
          stage('Terraform apply') {
             steps {
                 echo 'Terraform apply...'
-                sh 'sudo terraform apply --auto-approve'
+                sh 'terraform apply --auto-approve'
                
                
             }
@@ -101,7 +101,7 @@ pipeline {
         stage('Terraform destroy') {
             steps {
                 echo 'Terraform destroy...'
-                sh 'sudo terraform destroy --auto-approve'
+                sh 'terraform destroy --auto-approve'
         
         
     }
