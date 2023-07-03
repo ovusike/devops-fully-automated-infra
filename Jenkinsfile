@@ -60,7 +60,7 @@ pipeline {
             steps {
                 
                 sh """
-                sudo pip3 install checkov --use-feature=2020-resolver
+                pip3 install checkov --use-feature=2020-resolver
                 checkov -d .
                 #checkov -d . --skip-check CKV_AWS_23,CKV_AWS_24,CKV_AWS_126,CKV_AWS_135,CKV_AWS_8,CKV_AWS_23,CKV_AWS_24
                 #checkov -d . --skip-check CKV_AWS*
