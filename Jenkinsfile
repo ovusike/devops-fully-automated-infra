@@ -14,6 +14,9 @@ pipeline {
         terraform 'Terraform'
     }
 
+
+
+    
     stages {
         stage('Git checkout') {
             steps {
