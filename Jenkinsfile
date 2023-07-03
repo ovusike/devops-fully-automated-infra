@@ -56,7 +56,7 @@ pipeline {
             steps {
                 
                 sh """
-                sudo pip3 install checkov
+                sudo pip3 install checkov --use-feature=2020-resolver
                 checkov -d .
                 #checkov -d . --skip-check CKV_AWS_23,CKV_AWS_24,CKV_AWS_126,CKV_AWS_135,CKV_AWS_8,CKV_AWS_23,CKV_AWS_24
                 #checkov -d . --skip-check CKV_AWS*
@@ -84,6 +84,20 @@ pipeline {
                
             }
         }
+
+        
+        stage('Manual destroy approval') {
+            steps {
+                
+                input 'Approval required to destroy'
+               
+            }
+        }
+
+        stage('Terraform destroy') {
+            steps {
+                echo 'Terraform destroy...'
+                sh 'sudo terraform destroy --auto-approve'
         
         
     }
@@ -91,7 +105,7 @@ pipeline {
      post { 
         always { 
             echo 'I will always say Hello again!'
-            slackSend channel: '#team-devops', color: COLOR_MAP[currentBuild.currentResult], message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+            slackSend channel: '#integrating-slack-to-jenkins', color: COLOR_MAP[currentBuild.currentResult], message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
         }
     }
     
