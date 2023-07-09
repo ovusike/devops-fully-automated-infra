@@ -69,7 +69,10 @@ Fully automated and secured Terraform infra pipeline
             - Click on Create                
 
         2)  #### Configure system:
-            - Click on Manage Jenkins --> Configure System
+            - Click on Manage Jenkins --> Configure System 
+
+
+            SLACK
 
             1)  - Go to section Slack
                 - Workspace: **devops-fully-automated** (if not working try with Team-subdomain devopsfullyau-r0x2686)
