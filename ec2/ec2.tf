@@ -21,10 +21,11 @@ variable "key_pair_name" {
 
 resource "aws_security_group" "ec2_sg" {
   name        = join("", [var.name, "-", "ec2-sg"])
-  description = "Allow  traffic for http and ssh"
+  description = "Allow inbound traffic to VPC CIDR"
 
 
   ingress {
+    description = "what does this role enable"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -61,7 +62,7 @@ resource "aws_iam_instance_profile" "instance_profile" {
 
 
 resource "aws_instance" "web_server" {
-  ami                    = "ami-0b0dcb5067f052a63"
+  ami                    = "ami-06ca3ca175f37dd66"
   instance_type          = "t3.small"
   key_name               = var.key_pair_name  
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]

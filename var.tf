@@ -1,7 +1,7 @@
 variable "key_pair_name" {
     type = string
     description = "keypair to utilize"
-    default = "Ovus-key-pair"
+    default = "Ovus-Key-Pair"
 }
 
 # variable "vpc_id" {
